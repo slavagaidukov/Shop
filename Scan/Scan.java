@@ -1,5 +1,10 @@
+package Scan;
+
+import storage.ShopMessages;
+
 import java.util.Scanner;
 public class Scan {
+    ShopMessages shopMessages;
     public int scan () {
         Scanner num = new Scanner(System.in);
         String input ="";
@@ -13,7 +18,7 @@ public class Scan {
                 number = Integer.parseInt(input);
                 isNumber = true;
             } catch (java.lang.NumberFormatException e) {
-                System.out.println("Error. Please, input the digit.");
+                System.out.println(shopMessages.hashMap.get("digitError"));
             }
         }
         return number;

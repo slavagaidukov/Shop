@@ -1,12 +1,20 @@
- public class Main {
+package program;
+import Scan.Scan;
+import models.Authorization;
+import models.Administrator;
+import storage.DataOfShop;
+import storage.ShopMessages;
+public class Main {
     public static void main(String[] args) {
         DataOfShop data = new DataOfShop();
         Authorization reg = new Authorization(data);
         Administrator admin = new Administrator(data);
+        ShopMessages shopMessages = new ShopMessages();
+        shopMessages.map();
         Scan sc = new Scan();
         data.addStandardGoods();
         reg.addAdmin();
-        reg.welcome();
+        System.out.println(shopMessages.hashMap.get("welcome"));
         int number = sc.scan();
         while (number != 9) {
             switch (number) {
@@ -22,7 +30,7 @@
                 default:
                     System.out.println("Please, type correct number.");
             }
-            reg.welcome();
+            System.out.println(shopMessages.hashMap.get("welcome"));
             number=sc.scan();
         }
         if (number==9) {
