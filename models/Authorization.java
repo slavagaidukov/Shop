@@ -1,40 +1,40 @@
 package models;
 
+import messages.MessageKeys;
 import storage.DataOfShop;
-import storage.ShopMessages;
+import messages.ShopMessages;
 
 import java.util.Scanner;
 public class Authorization {
-    ShopMessages shopMessages;
     DataOfShop dataOfShop;
     public Authorization(DataOfShop dataOfShop) {
         this.dataOfShop = dataOfShop;
     }
     public void addAdmin () {
-        dataOfShop.listOfEmails.add("admin@slavashop.by");
+        dataOfShop.getListOfEmails().add("admin@slavashop.by");
     }
 
     public void registr() {
-        System.out.println(shopMessages.hashMap.get("emailRegistration"));
+        System.out.println(ShopMessages.getMessage(MessageKeys.EMAILREGISTRATION));
             Scanner mailReg = new Scanner(System.in);
             String mail = mailReg.next();
-            if (dataOfShop.listOfEmails.contains(mail)) {
-                System.out.println(shopMessages.hashMap.get("emailExists"));
+            if (dataOfShop.getListOfEmails().contains(mail)) {
+                System.out.println(ShopMessages.getMessage(MessageKeys.EMAILEXISTS));
             } else {
-                dataOfShop.listOfEmails.add(mail);
-                System.out.println(shopMessages.hashMap.get("finishRegistration"));
+                dataOfShop.getListOfEmails().add(mail);
+                System.out.println(ShopMessages.getMessage(MessageKeys.FINISHREGISTRATION));
             }
         return;
     }
 
     public void login() {
-        System.out.println(shopMessages.hashMap.get("emailLogin"));
+        System.out.println(ShopMessages.getMessage(MessageKeys.EMAILLOGIN));
             Scanner mailLog = new Scanner(System.in);
             String mail = mailLog.next();
-            if (dataOfShop.listOfEmails.contains(mail)) {
-                System.out.println(shopMessages.hashMap.get("loginTrue"));
+            if (dataOfShop.getListOfEmails().contains(mail)) {
+                System.out.println(ShopMessages.getMessage(MessageKeys.LOGINTRUE));
             } else {
-                System.out.println(shopMessages.hashMap.get("loginFalse"));
+                System.out.println(ShopMessages.getMessage(MessageKeys.LOGINFALSE));
             }
 
             Scanner outputGoods = new Scanner(System.in);

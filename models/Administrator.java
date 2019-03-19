@@ -1,23 +1,23 @@
 package models;
 
+import messages.MessageKeys;
 import storage.DataOfShop;
-import storage.ShopMessages;
+import messages.ShopMessages;
 
 import java.util.Scanner;
 
 public class Administrator {
     DataOfShop dataOfShop;
-    ShopMessages shopMessages;
     public Administrator(DataOfShop dataOfShop) {
         this.dataOfShop = dataOfShop;
     }
 
     public void adminLog() {
-        System.out.println(shopMessages.hashMap.get("emailAdmin"));
+        System.out.println(ShopMessages.getMessage(MessageKeys.EMAILADMIN));
         Scanner admSc = new Scanner(System.in);
         String adminEmail = admSc.next();
-        if (dataOfShop.listOfEmails.contains(adminEmail)) {
-            System.out.println(shopMessages.hashMap.get("adminLogged"));
+        if (dataOfShop.getListOfEmails().contains(adminEmail)) {
+            System.out.println(ShopMessages.getMessage(MessageKeys.ADMINLOGGED));
             Scanner admOutput = new Scanner(System.in);
             int adminOutput = admOutput.nextInt();
             switch (adminOutput) {
@@ -31,7 +31,7 @@ public class Administrator {
             }
         }
         else {
-            System.out.println(shopMessages.hashMap.get("emailAdminError"));
+            System.out.println(ShopMessages.getMessage(MessageKeys.EMAILADMINERROR));
         }
     }
     }

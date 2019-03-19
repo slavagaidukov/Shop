@@ -1,24 +1,23 @@
-package Scan;
+package scan;
 
-import storage.ShopMessages;
+import messages.MessageKeys;
+import messages.ShopMessages;
 
 import java.util.Scanner;
 public class Scan {
-    ShopMessages shopMessages;
     public int scan () {
         Scanner num = new Scanner(System.in);
         String input ="";
         int number = 0;
         boolean isNumber = false;
 
-
-        while (isNumber==false) {
+        while (!isNumber) {
             try {
                 input = num.next();
                 number = Integer.parseInt(input);
                 isNumber = true;
             } catch (java.lang.NumberFormatException e) {
-                System.out.println(shopMessages.hashMap.get("digitError"));
+                System.out.println(ShopMessages.getMessage(MessageKeys.DIGITERROR));
             }
         }
         return number;
